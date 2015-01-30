@@ -18,15 +18,7 @@ namespace ChangeMachine.Core.Test
         [TestInitialize]
         public void Initialize() {
 
-            ConfigurationUtilityMock config = new ConfigurationUtilityMock();
-
-            List<IMoney> availableMoney = new List<IMoney>();
-            availableMoney.AddRange(this.GetCoinCollection(new uint[] { 100, 50, 25, 10, 5, 1 }));
-            availableMoney.AddRange(this.GetBillCollection(new uint[] { 10000, 5000, 2000, 1000, 500, 200 }));
-
-            config.AvailableMoney = availableMoney.ToArray();
-
-            this.ConfigurationUtility = config;
+            
         }
 
         [TestMethod]
@@ -35,31 +27,6 @@ namespace ChangeMachine.Core.Test
 
             ChangeCalculator changeCalculator = new ChangeCalculator(null);
 
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void ChangeCalculator_EmptyCoins_Test()
-        {
-            MockLibrary.ConfigurationUtilityMock config = new MockLibrary.ConfigurationUtilityMock();
-
-            config.AvailableMoney = new IMoney[] { };
-
-            ChangeCalculator changeCalculator = new ChangeCalculator(config);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void ChangeCalculator_RepeatedMoney_Test()
-        {
-            ConfigurationUtilityMock config = new ConfigurationUtilityMock();
-
-            List<IMoney> availableMoney = new List<IMoney>();
-            availableMoney.AddRange(this.GetCoinCollection(new uint[] { 1, 1 }));
-
-            config.AvailableMoney = availableMoney.ToArray();
-
-            ChangeCalculator changeCalculator = new ChangeCalculator(config);
         }
 
         [TestMethod]

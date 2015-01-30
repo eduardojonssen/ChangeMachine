@@ -14,10 +14,17 @@ namespace ChangeMachine.Core
     public class ChangeCalculator
     {
         private BaseLogUtility logUtility;
-        public ChangeCalculator()
+        public ChangeCalculator(IConfigurationUtility configurationUtility = null)
         {
-            IConfigurationUtility configuration = new ConfigurationUtility();
-            this.logUtility = new FileLogUtility(configuration.LogFilePath, configuration.LogFileName);
+            IConfigurationUtility configuration = configurationUtility;
+
+            // Caso nenhum valor tenha sido informado, instancia a classe padrão.
+            if (configuration == null)
+            {
+                configuration = new ConfigurationUtility();
+            }
+
+            this.logUtility = LogUtilityFactory.CreateLogUtility(configuration);
         }
         public CalculateResponse Calculate(CalculateRequest request)
         {
@@ -43,7 +50,7 @@ namespace ChangeMachine.Core
             // Armazena o troco ainda não processado.
             ulong remainingAmount = changeAmount;
 
-            List<ChangeData> changeDataCollection = new List<ChangeData>(); 
+            List<ChangeData> changeDataCollection = new List<ChangeData>();
 
             while (remainingAmount > 0)
             {
@@ -63,14 +70,14 @@ namespace ChangeMachine.Core
                 }
 
                 // Calcula o troco para o valor especificado.
-                Dictionary<uint, ulong> changeDictionary = processor.Calculate(remainingAmount);
+                List<KeyValuePair<uint, ulong>> changeCollection = processor.Calculate(remainingAmount);
 
                 ChangeData changeData = new ChangeData();
                 changeData.MoneyDescription = processor.GetName();
-                changeData.ChangeDictionary = changeDictionary;
+                changeData.ChangeCollection = changeCollection;
                 changeDataCollection.Add(changeData);
 
-                IEnumerable<ulong> processedAmountCollection = changeDictionary.Select(p => p.Key * p.Value);
+                IEnumerable<ulong> processedAmountCollection = changeCollection.Select(p => p.Key * p.Value);
                 ulong processedAmount = 0;
                 foreach (ulong amount in processedAmountCollection)
                 {

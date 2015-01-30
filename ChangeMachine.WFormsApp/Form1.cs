@@ -51,7 +51,7 @@ namespace ChangeMachine.WFormsApp
                 StringBuilder result = new StringBuilder();
                 foreach (ChangeData changeData in response.Change)
                 {
-                    foreach (KeyValuePair<uint, ulong> changeItem in changeData.ChangeDictionary)
+                    foreach (KeyValuePair<uint, ulong> changeItem in changeData.ChangeCollection)
                     {
                         result.AppendFormat("{0} {1} de {2}", changeItem.Value, changeData.MoneyDescription, changeItem.Key).AppendLine();
                     }
@@ -60,5 +60,7 @@ namespace ChangeMachine.WFormsApp
                 UxTxtChangeResult.Text = result.ToString();
             }
         }
+
+        
     }
 }

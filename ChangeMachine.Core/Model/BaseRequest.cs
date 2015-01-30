@@ -16,7 +16,7 @@ namespace ChangeMachine.Core.Model
         /// <summary>
         /// Obtém o resultado da validação.
         /// </summary>
-        public bool IsValid {
+        internal bool IsValid {
             get {
                 this._errorReportCollection.Clear();
                 this.Validate();

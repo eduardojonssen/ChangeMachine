@@ -41,7 +41,7 @@ namespace ChangeMachine.ConsoleApp
                 Console.WriteLine("Troco:");
                 foreach (ChangeData changeData in response.Change)
                 {
-                    foreach (KeyValuePair<uint, ulong> changeItem in changeData.ChangeDictionary)
+                    foreach (KeyValuePair<uint, ulong> changeItem in changeData.ChangeCollection)
                     {
                         Console.WriteLine("{0} {1} de {2}", changeItem.Value, changeData.MoneyDescription, changeItem.Key);
                     }

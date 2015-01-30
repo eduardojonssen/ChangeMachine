@@ -1,13 +1,14 @@
 ﻿using ChangeMachine.Core.Model;
+using ChangeMachine.Core.Utility.Log;
 using System;
 namespace ChangeMachine.Core.Utility
 {
     public interface IConfigurationUtility
     {
-        IMoney[] AvailableMoney { get;}
-
         string LogFileName { get; }
 
         string LogFilePath { get; }
+
+        LogUtilityType LogType { get; }
     }
 }

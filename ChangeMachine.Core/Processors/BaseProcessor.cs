@@ -8,12 +8,12 @@ namespace ChangeMachine.Core.Processors
 {
     public abstract class BaseProcessor
     {
-        public Dictionary<uint, ulong> Calculate(ulong changeAmount)
+        public List<KeyValuePair<uint, ulong>> Calculate(ulong changeAmount)
         {
             // Executa a validação do valor recebido.
             if (this.Validate(changeAmount) == false)
             {
-                return new Dictionary<uint, ulong>();
+                return new List<KeyValuePair<uint, ulong>>();
             }
 
             // Executa o cálculo do troco.
@@ -24,9 +24,9 @@ namespace ChangeMachine.Core.Processors
 
         public abstract string GetName();
 
-        protected Dictionary<uint, ulong> CalculateImplementation(ulong changeAmount)
+        protected List<KeyValuePair<uint, ulong>> CalculateImplementation(ulong changeAmount)
         {
-            Dictionary<uint, ulong> moneyCountDictionary = new Dictionary<uint, ulong>();
+            List<KeyValuePair<uint, ulong>> moneyCountDictionary = new List<KeyValuePair<uint, ulong>>();
 
             uint[] acceptedValues = GetAcceptedValues();
 
@@ -34,7 +34,7 @@ namespace ChangeMachine.Core.Processors
 
             ulong moneyCount = changeAmount / maxAcceptedValue;
 
-            moneyCountDictionary.Add(maxAcceptedValue, moneyCount);
+            moneyCountDictionary.Add(new KeyValuePair<uint, ulong>(maxAcceptedValue, moneyCount));
 
             return moneyCountDictionary;
         }

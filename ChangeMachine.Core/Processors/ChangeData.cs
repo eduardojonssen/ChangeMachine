@@ -9,7 +9,7 @@ namespace ChangeMachine.Core.Processors
     public class ChangeData
     {
         public ChangeData() {
-            this.ChangeDictionary = new Dictionary<uint, ulong>();
+            this.ChangeCollection = new List<KeyValuePair<uint, ulong>>();
         }
 
         /// <summary>
@@ -20,6 +20,6 @@ namespace ChangeMachine.Core.Processors
         /// <summary>
         /// Obtém ou define o dicionário de valor-quantidade do troco.
         /// </summary>
-        public Dictionary<uint, ulong> ChangeDictionary { get; set; }
+        public List<KeyValuePair<uint, ulong>> ChangeCollection { get; set; }
     }
 }

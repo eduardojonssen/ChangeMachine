@@ -62,9 +62,12 @@
     <Compile Include="Utility\ConfigurationUtility.cs" />
     <Compile Include="Utility\IConfigurationUtility.cs" />
     <Compile Include="Utility\Log\BaseLogUtility.cs" />
+    <Compile Include="Utility\Log\EventLogUtility.cs" />
     <Compile Include="Utility\Log\FileLogUtility.cs" />
     <Compile Include="Utility\Log\LogCategory.cs" />
     <Compile Include="Utility\Log\LogEntry.cs" />
+    <Compile Include="Utility\Log\LogUtilityFactory.cs" />
+    <Compile Include="Utility\Log\LogUtilityType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
