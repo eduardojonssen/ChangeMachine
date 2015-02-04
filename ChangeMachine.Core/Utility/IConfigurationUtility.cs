@@ -10,5 +10,7 @@ namespace ChangeMachine.Core.Utility
         string LogFilePath { get; }
 
         LogUtilityType LogType { get; }
+
+        string ConnectionString { get; }
     }
 }

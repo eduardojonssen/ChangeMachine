@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="a92bd7aa-37cb-4afc-9eea-fd4f8652556e" name="Activity" linkedPackageId="beb2c450-30ca-425c-b4be-db3d0c1a0b07" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="ddedf58e-edb3-44f7-95bf-638ce0da6294">
+      <profileInstance Id="6ba5c507-8001-415c-8056-e1a161e59997" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e5a4a1cf-3d93-4e7d-ba36-ada496a183b1">
+      <profileInstance Id="fb6766fa-e84a-47b3-a65c-79ce3e1a6add" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="adaebaf9-f76d-4129-8ab6-a3703bedcf2a" name="Activity" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="5e6fa063-0dde-4e7f-b2fe-a8d5cef33be1" />
+        <nodes>
+          <initialNode Id="47b3b914-0fa4-4ac8-b894-f8238bee2326" name="Initial1" isLeaf="false">
+            <elementDefinition Id="eccebb7e-ab1f-4c11-a418-e642e2b0741d" />
+            <flowNodeTargets>
+              <controlFlow Id="cd5bd97e-903c-4747-86d8-86e78bff727c" isLeaf="false">
+                <opaqueActionMoniker Id="71e5789c-689c-449e-b427-51b69be92851" LastKnownName="Escrever log com valores da requisição" />
+                <elementDefinition Id="9fe4bf43-6466-4f7b-981f-1c9783f5daa2" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="3152952b-d23b-4ca1-a035-a38a736d4709" name="Validar o request" isLeaf="false">
+            <elementDefinition Id="d4060d9b-6a86-4732-91b0-241ecd7cfe03" />
+            <flowNodeTargets>
+              <controlFlow Id="4aa67c52-fdef-4415-867d-af8eb0fab66d" isLeaf="false">
+                <decisionNodeMoniker Id="dfe46aa7-f1e9-460d-9d6c-2d499a422747" LastKnownName="Decision1" />
+                <elementDefinition Id="20d674ef-2154-418f-b651-489610874060" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="dfe46aa7-f1e9-460d-9d6c-2d499a422747" name="Decision1" isLeaf="false">
+            <elementDefinition Id="f6b2584b-e0a5-497c-8342-d7af4a8caba8" />
+            <flowNodeTargets>
+              <controlFlow Id="41c90a81-6edc-4026-87d2-e81312495908" guard="Request inválido" isLeaf="false">
+                <mergeNodeMoniker Id="882b3d10-2020-4c02-83f4-02220f37370b" LastKnownName="Merge1" />
+                <elementDefinition Id="d9c10aa5-3017-4a99-a0ba-50956b3da753" />
+              </controlFlow>
+              <controlFlow Id="b8dddc09-a2a9-48a6-a7f5-4db27942aab6" guard="Request ok" isLeaf="false">
+                <opaqueActionMoniker Id="b0a400d2-8c16-4238-b404-5f4381f56374" LastKnownName="Calcular troco" />
+                <elementDefinition Id="293412ea-3f41-467d-803b-60fcc0795e93" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="b0a400d2-8c16-4238-b404-5f4381f56374" name="Calcular troco" isLeaf="false">
+            <elementDefinition Id="92b854ed-bf3b-4a7c-ae9b-990b20d0f9f9" />
+            <flowNodeTargets>
+              <controlFlow Id="3028963e-8eab-428f-8c43-931b71829c93" isLeaf="false">
+                <opaqueActionMoniker Id="cca59642-9fe0-4a17-b6b8-8bbd2278c5c0" LastKnownName="Verificar se existe troco a processar" />
+                <elementDefinition Id="94f43792-8cdf-4283-b474-27823a191981" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="71e5789c-689c-449e-b427-51b69be92851" name="Escrever log com valores da requisição" isLeaf="false">
+            <elementDefinition Id="a57fa4dc-a721-4788-9f3a-08c91011a4b2" />
+            <flowNodeTargets>
+              <controlFlow Id="725e042d-71ae-4fce-bb69-aebb9408b101" isLeaf="false">
+                <opaqueActionMoniker Id="3152952b-d23b-4ca1-a035-a38a736d4709" LastKnownName="Validar o request" />
+                <elementDefinition Id="ef8885e4-6e86-4154-b8ce-a97d1c4aa652" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="3967e54d-0a90-4270-af7a-93c7fc768014" name="Retornar resposta" isLeaf="false">
+            <elementDefinition Id="55ce5857-04cf-4a45-ba53-cb32877dd1cf" />
+            <flowNodeTargets>
+              <controlFlow Id="c7d816bd-4f45-49f8-8b4d-798c4ad9784e" isLeaf="false">
+                <activityFinalNodeMoniker Id="78125d28-d11e-41ef-8f51-e8f3bc4af272" LastKnownName="ActivityFinal2" />
+                <elementDefinition Id="12668a79-9844-4811-b6a2-1519155c0025" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c0f1c638-f26c-4d4f-82f4-883c963aa350" name="Logar resposta" isLeaf="false">
+            <elementDefinition Id="ec58382a-60ab-4742-8111-3eb8439de1e3" />
+            <flowNodeTargets>
+              <controlFlow Id="8238174c-6808-4021-80cb-8a54f81ebea3" isLeaf="false">
+                <opaqueActionMoniker Id="3967e54d-0a90-4270-af7a-93c7fc768014" LastKnownName="Retornar resposta" />
+                <elementDefinition Id="1d866270-291d-4624-8342-820b3f84b6e4" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="a42a1d7f-e115-47d6-8732-bac8ff992641" name="Tentar obter processador compatível com troco restante" isLeaf="false">
+            <elementDefinition Id="35d70444-83a9-45e3-a5e0-d12f8d2a48a5" />
+            <flowNodeTargets>
+              <controlFlow Id="7b6adf0a-b745-46d8-a467-36af5e359243" isLeaf="false">
+                <decisionNodeMoniker Id="516ae5b9-cf8a-4776-b7b7-3fd28f6da185" LastKnownName="Decision3" />
+                <elementDefinition Id="f0a1c185-2776-494f-980a-51a2d6d2f62a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="aa7e58fd-13bc-448c-9725-011f5d658747" name="Processar troco" isLeaf="false">
+            <elementDefinition Id="821ffe44-ecd6-48a3-9df2-ca48a796c5f5" />
+            <flowNodeTargets>
+              <controlFlow Id="e94fb47a-5c8c-43a9-8510-389c0b72f67a" isLeaf="false">
+                <opaqueActionMoniker Id="cca59642-9fe0-4a17-b6b8-8bbd2278c5c0" LastKnownName="Verificar se existe troco a processar" />
+                <elementDefinition Id="bfa96562-baa1-4e97-b5fc-a068c570bdac" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="ec17af64-7908-4a50-a072-b228491e0165" name="Decision2" isLeaf="false">
+            <elementDefinition Id="974d2ce0-e8cd-402d-b4ee-ce1233701c48" />
+            <flowNodeTargets>
+              <controlFlow Id="88284497-4646-4705-96fa-14802965a2af" guard="Sim" isLeaf="false">
+                <opaqueActionMoniker Id="a42a1d7f-e115-47d6-8732-bac8ff992641" LastKnownName="Tentar obter processador compatível com troco restante" />
+                <elementDefinition Id="04ee3224-b5ff-4e7e-8793-5b6b39f72288" />
+              </controlFlow>
+              <controlFlow Id="e2602103-6cab-4f7b-8716-850f0595dec1" guard="Não" isLeaf="false">
+                <mergeNodeMoniker Id="882b3d10-2020-4c02-83f4-02220f37370b" LastKnownName="Merge1" />
+                <elementDefinition Id="d80c4341-7863-4ce4-814d-84030a462450" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="cca59642-9fe0-4a17-b6b8-8bbd2278c5c0" name="Verificar se existe troco a processar" isLeaf="false">
+            <elementDefinition Id="a27769de-9f83-43dc-ad55-3c425d67936a" />
+            <flowNodeTargets>
+              <controlFlow Id="c9b592a1-f5fd-49d1-974f-4bff0a0bdcc7" isLeaf="false">
+                <decisionNodeMoniker Id="ec17af64-7908-4a50-a072-b228491e0165" LastKnownName="Decision2" />
+                <elementDefinition Id="520e425c-8398-4a91-b9e3-f99462b3c18d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="516ae5b9-cf8a-4776-b7b7-3fd28f6da185" name="Decision3" isLeaf="false">
+            <elementDefinition Id="2a55b83e-3e6f-4281-a2d1-395df5d4b187" />
+            <flowNodeTargets>
+              <controlFlow Id="a2f37179-321a-46cf-8c3f-89ace33f1a28" guard="Obteve" isLeaf="false">
+                <opaqueActionMoniker Id="aa7e58fd-13bc-448c-9725-011f5d658747" LastKnownName="Processar troco" />
+                <elementDefinition Id="0dbb0a13-f800-46c6-9520-2ea35271b708" />
+              </controlFlow>
+              <controlFlow Id="61f35134-0345-407b-aacc-6aca33564fc1" guard="Não obteve" isLeaf="false">
+                <mergeNodeMoniker Id="882b3d10-2020-4c02-83f4-02220f37370b" LastKnownName="Merge1" />
+                <elementDefinition Id="989328c3-2c9c-47e3-b2a1-9a0cac87f59c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode Id="78125d28-d11e-41ef-8f51-e8f3bc4af272" name="ActivityFinal2" isLeaf="false">
+            <elementDefinition Id="d41f0c99-7d15-4280-8b66-2d2c1735cf07" />
+          </activityFinalNode>
+          <mergeNode Id="882b3d10-2020-4c02-83f4-02220f37370b" name="Merge1" isLeaf="false">
+            <elementDefinition Id="df7c9682-d624-4861-9342-98d26e37ab11" />
+            <flowNodeTargets>
+              <controlFlow Id="29da4fc2-6a53-465f-9858-ca409647ddc5" isLeaf="false">
+                <opaqueActionMoniker Id="c0f1c638-f26c-4d4f-82f4-883c963aa350" LastKnownName="Logar resposta" />
+                <elementDefinition Id="af04aa41-16ff-4718-8279-4ce135495844" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="beb2c450-30ca-425c-b4be-db3d0c1a0b07" name="ModelingProject">
+    <elementDefinition Id="bb786172-cf94-4952-80b4-b43acc287ddf" />
+  </package>
+</activityRootModel>

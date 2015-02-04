@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dlp.Framework;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -9,12 +10,19 @@ namespace ChangeMachine.Core.Utility.Log
 {
     public static class LogUtilityFactory
     {
-        public static BaseLogUtility CreateLogUtility(IConfigurationUtility configuration)
+        public static BaseLogUtility CreateLogUtility()
         {
-            switch (configuration.LogType)
+            // Obtém uma instancia do utilitário de acesso ao arquivo de configuração.
+            IConfigurationUtility configurationUtility = IocFactory.Resolve<IConfigurationUtility>();
+
+            switch (configurationUtility.LogType)
             {
                 case LogUtilityType.File:
-                    return new FileLogUtility(configuration.LogFilePath,configuration.LogFileName);
+                    return new FileLogUtility(configurationUtility.LogFilePath, configurationUtility.LogFileName);
+
+                case LogUtilityType.Database:
+                    return new DatabaseLogUtility();
+
                 case LogUtilityType.EventLog:
                 default:
                     return new EventLogUtility();

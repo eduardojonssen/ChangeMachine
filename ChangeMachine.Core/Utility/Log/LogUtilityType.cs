@@ -10,6 +10,7 @@ namespace ChangeMachine.Core.Utility.Log
     {
         Undefined = 0,
         File = 1,
-        EventLog = 2
+        EventLog = 2,
+        Database = 3
     }
 }

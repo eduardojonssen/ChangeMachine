@@ -1,4 +1,5 @@
 ﻿using ChangeMachine.Core.Utility;
+using ChangeMachine.Core.Utility.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,18 @@ namespace MockLibrary
         public string LogFilePath
         {
             get { return @"C:\Logs\Test"; }
+        }
+
+
+        public LogUtilityType LogType
+        {
+            get { return LogUtilityType.File; }
+        }
+
+
+        public string ConnectionString
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

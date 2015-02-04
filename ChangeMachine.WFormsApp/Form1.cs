@@ -1,13 +1,9 @@
-﻿using ChangeMachine.Core.Model;
+﻿using ChangeMachine.Core;
+using ChangeMachine.Core.Model;
 using ChangeMachine.Core.Processors;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChangeMachine.WFormsApp
@@ -21,13 +17,14 @@ namespace ChangeMachine.WFormsApp
 
         private void UxBtnCalculate_Click(object sender, EventArgs e)
         {
-
             ulong productAmount = ulong.Parse(UxTxtProductAmount.Text);
-
+            DilmaProcessor dp = new DilmaProcessor();
 
             ulong paidAmount = ulong.Parse(UxTxtPaidAmount.Text);
 
             ChangeMachine.Core.ChangeCalculator changeCalculator = new Core.ChangeCalculator();
+
+            changeCalculator.OnProcessorCompleted += changeCalculator_OnProcessorCompleted;
 
             CalculateRequest request = new CalculateRequest();
             request.ProductAmount = productAmount;
@@ -61,6 +58,9 @@ namespace ChangeMachine.WFormsApp
             }
         }
 
-        
+        void changeCalculator_OnProcessorCompleted(object sender, ProcessorCompletedEventArgs e)
+        {
+            ChangeData currentChangeData = e.CurrentChange;
+        }        
     }
 }

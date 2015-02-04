@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChangeMachine.Core.Processors
 {
-    public abstract class BaseProcessor
+    public abstract class BaseProcessor : IProcessor
     {
         public List<KeyValuePair<uint, ulong>> Calculate(ulong changeAmount)
         {

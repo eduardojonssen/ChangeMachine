@@ -2,6 +2,7 @@
 using ChangeMachine.Core.Processors;
 using ChangeMachine.Core.Utility;
 using ChangeMachine.Core.Utility.Log;
+using Dlp.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,37 @@ using System.Web.Script.Serialization;
 
 namespace ChangeMachine.Core
 {
+    public delegate void ProcessorCompletedEventHandler(object sender, ProcessorCompletedEventArgs e);
+
     public class ChangeCalculator
     {
         private BaseLogUtility logUtility;
-        public ChangeCalculator(IConfigurationUtility configurationUtility = null)
+        public ChangeCalculator()
         {
-            IConfigurationUtility configuration = configurationUtility;
+            // Registra o utilitário de configuração a ser utilizado.
+            IocFactory.Register<IConfigurationUtility, ConfigurationUtility>();
+            IocFactory.RegisterNamespace("ChangeMachine.Core.Repository");
 
-            // Caso nenhum valor tenha sido informado, instancia a classe padrão.
-            if (configuration == null)
-            {
-                configuration = new ConfigurationUtility();
-            }
-
-            this.logUtility = LogUtilityFactory.CreateLogUtility(configuration);
+            this.logUtility = LogUtilityFactory.CreateLogUtility();
+            this.logUtility.OnLogError += logUtility_OnLogError; //logUtility_OnLogError;
         }
+
+        void logUtility_OnLogError(object sender, LogErrorEventArgs e, DateTime currentDate)
+        {
+            EventLogUtility logUtility = new EventLogUtility();
+            
+            LogEntry entry = new LogEntry();
+            entry.Category = LogCategory.Error;
+            entry.Message = e.LogErrorException.ToString();
+
+            logUtility.Write(entry);
+        }
+
+        /// <summary>
+        /// Evento a ser disparado quando um processador terminar sua execução.
+        /// </summary>
+        public event ProcessorCompletedEventHandler OnProcessorCompleted;
+
         public CalculateResponse Calculate(CalculateRequest request)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -55,7 +72,7 @@ namespace ChangeMachine.Core
             while (remainingAmount > 0)
             {
                 // Selecionar o processador adequado para o troco restante.
-                BaseProcessor processor = ProcessorFactory.Create(remainingAmount);
+                IProcessor processor = ProcessorFactory.Create(remainingAmount);
 
                 // Verifica se foi encontrado um processador para realizar o cálculo.
                 if (processor == null)
@@ -76,6 +93,12 @@ namespace ChangeMachine.Core
                 changeData.MoneyDescription = processor.GetName();
                 changeData.ChangeCollection = changeCollection;
                 changeDataCollection.Add(changeData);
+
+                ProcessorCompletedEventArgs eventArgs = new ProcessorCompletedEventArgs();
+                eventArgs.CurrentChange = changeData;
+
+                // Caso exista alguém escutando o evento, dispara a notificação.
+                if (this.OnProcessorCompleted != null) { this.OnProcessorCompleted(this, eventArgs); }
 
                 IEnumerable<ulong> processedAmountCollection = changeCollection.Select(p => p.Key * p.Value);
                 ulong processedAmount = 0;

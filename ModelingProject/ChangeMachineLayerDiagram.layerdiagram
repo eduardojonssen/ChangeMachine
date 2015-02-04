@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="11eabb9f-fd09-4411-a9c5-2ca4b1313554" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="fffc6a10-f390-46e8-9fa3-6e02204b8f60" name="User Interface">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="8812679e-d2b7-449f-adfc-1549bb18766a" direction="Forward">
+          <layerMoniker Id="87f1effe-4558-430e-a39b-8475189ce46b" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="1514cc59-7211-41f4-bfff-19d98105c67b" name="ChangeMachine.ConsoleApp">
+          <ArtifactNode Label="ChangeMachine.ConsoleApp" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2013/Projects/ChangeMachine/ChangeMachine.Console/ChangeMachine.ConsoleApp.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.ConsoleApp)" Label="ChangeMachine.ConsoleApp.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="5328d7b0-fae0-4231-8bab-1406b4e7df65" name="ChangeMachine.WFormsApp">
+          <ArtifactNode Label="ChangeMachine.WFormsApp" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2013/Projects/ChangeMachine/ChangeMachine.WFormsApp/ChangeMachine.WFormsApp.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.WFormsApp)" Label="ChangeMachine.WFormsApp.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="87f1effe-4558-430e-a39b-8475189ce46b" name="Business Logic">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="c1c1a1ec-d0e1-4267-b5f7-e15f87b9f278" direction="Forward">
+          <layerMoniker Id="a27d0c5e-c60a-495b-90f8-7f6c0246de5d" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="c996bf86-b492-46b1-8207-5cb046589704" name="ChangeMachine.Core">
+          <ArtifactNode Label="ChangeMachine.Core" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2013/Projects/ChangeMachine/ChangeMachine.Core/ChangeMachine.Core.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core)" Label="ChangeMachine.Core.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="a27d0c5e-c60a-495b-90f8-7f6c0246de5d" name="Database">
+      <references>
+        <reference Id="9709444f-a474-4ac7-8137-2f72603be8b8" name="Repository">
+          <ArtifactNode Label="Repository" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2013/Projects/ChangeMachine/ChangeMachine.Core/ChangeMachine.Core.csproj&quot; File=&quot;$(PersonalUri)/visual studio 2013/Projects/ChangeMachine/ChangeMachine.Core/Repository/&quot;)">
+            <Category Ref="ProjectFolder" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core Namespace=ChangeMachine.Core.Repository Type=Banana)" Label="Banana" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core Namespace=ChangeMachine.Core.Repository Type=BaseRepository)" Label="BaseRepository" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core Namespace=ChangeMachine.Core.Repository.Entities Type=LogEntryEntity)" Label="LogEntryEntity" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core Namespace=ChangeMachine.Core.Repository Type=ILogEntryRepository)" Label="ILogEntryRepository" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=ChangeMachine.Core Namespace=ChangeMachine.Core.Repository Type=LogEntryRepository)" Label="LogEntryRepository" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

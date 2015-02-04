@@ -27,5 +27,11 @@ namespace ChangeMachine.Core.Utility
                 return (LogUtilityType)Enum.Parse(typeof(LogUtilityType), ConfigurationManager.AppSettings["LogType"]);
             } 
         }
+
+
+        public string ConnectionString
+        {
+            get { return ConfigurationManager.ConnectionStrings["ChangeMachine"].ConnectionString; }
+        }
     }
 }

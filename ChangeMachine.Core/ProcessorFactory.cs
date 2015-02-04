@@ -1,4 +1,5 @@
 ﻿using ChangeMachine.Core.Processors;
+using Dlp.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,19 @@ namespace ChangeMachine.Core
         /// </summary>
         /// <param name="changeAmount">Valor do troco a ser processado.</param>
         /// <returns>Retorna o processador a ser utilizado para o cálculo do troco.</returns>
-        public static BaseProcessor Create(ulong changeAmount)
+        public static IProcessor Create(ulong changeAmount)
         {
+            IocFactory.Register<IProcessor, BillProcessor>();
+            IocFactory.Register<IProcessor, CandyProcessor>();
+            IocFactory.Register<IProcessor, CoinProcessor>();
+            IocFactory.Register<IProcessor, DilmaProcessor>();
+
             // Lista dos tipos de processadores disponíveis.
-            BaseProcessor[] processorCollection = new BaseProcessor[] {
-                new CoinProcessor(),
-                new BillProcessor(),
-                new CandyProcessor(),
-                new DilmaProcessor()
+            IProcessor[] processorCollection = new IProcessor[] {
+                IocFactory.ResolveSpecific<IProcessor>("ChangeMachine.Core.Processors.BillProcessor"),
+                IocFactory.ResolveSpecific<IProcessor>("ChangeMachine.Core.Processors.CandyProcessor"),
+                IocFactory.ResolveSpecific<IProcessor>("ChangeMachine.Core.Processors.CoinProcessor"),
+                IocFactory.ResolveSpecific<IProcessor>("ChangeMachine.Core.Processors.DilmaProcessor")
             };
 
             // Adicione novos processadores acima desta linha.

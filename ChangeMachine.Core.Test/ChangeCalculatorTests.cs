@@ -25,14 +25,14 @@ namespace ChangeMachine.Core.Test
         [ExpectedException(typeof(ArgumentNullException))]
         public void ChangeCalculator_ArgumentNull_Test(){
 
-            ChangeCalculator changeCalculator = new ChangeCalculator(null);
+            ChangeCalculator changeCalculator = new ChangeCalculator();
 
         }
 
         [TestMethod]
         public void Calculate_InsuficientAmount_Test()
         {
-            ChangeCalculator changeCalculator = new ChangeCalculator(this.ConfigurationUtility);
+            ChangeCalculator changeCalculator = new ChangeCalculator();
 
             CalculateRequest request = new CalculateRequest();
             request.ProductAmount = 1000;
@@ -49,8 +49,7 @@ namespace ChangeMachine.Core.Test
         [TestMethod]
         public void Calculate_ChangeAmountZero_Test()
         {
-            ChangeCalculator changeCalculator = new ChangeCalculator(this.ConfigurationUtility);
-
+            ChangeCalculator changeCalculator = new ChangeCalculator();
             CalculateRequest request = new CalculateRequest();
             request.ProductAmount = 1000;
             request.PaidAmount = 1000;
@@ -65,7 +64,7 @@ namespace ChangeMachine.Core.Test
         [TestMethod]
         public void Calculate_ValidChange_Test()
         {
-            ChangeCalculator changeCalculator = new ChangeCalculator(this.ConfigurationUtility);
+            ChangeCalculator changeCalculator = new ChangeCalculator();
 
             CalculateRequest request = new CalculateRequest();
             request.ProductAmount = 1000;

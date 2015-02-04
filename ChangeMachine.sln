@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockLibrary", "MockLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeMachine.WFormsApp", "ChangeMachine.WFormsApp\ChangeMachine.WFormsApp.csproj", "{E7821E75-3709-433C-874C-63230AA5C0B2}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject", "ModelingProject\ModelingProject.modelproj", "{28E2741A-4FB6-4605-BEDF-38A2A2DFF145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{E7821E75-3709-433C-874C-63230AA5C0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7821E75-3709-433C-874C-63230AA5C0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7821E75-3709-433C-874C-63230AA5C0B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E2741A-4FB6-4605-BEDF-38A2A2DFF145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E2741A-4FB6-4605-BEDF-38A2A2DFF145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E2741A-4FB6-4605-BEDF-38A2A2DFF145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E2741A-4FB6-4605-BEDF-38A2A2DFF145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
